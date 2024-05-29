@@ -1,0 +1,44 @@
+---
+import "98.css";
+---
+
+<html lang="ja">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Astro</title>
+    </head>
+    <body>
+        <div class="window">
+            <div class="title-bar">
+                <div class="title-bar-text">http://www.akaiheya.co.jp</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize"></button>
+                    <button aria-label="Maximize" disabled></button>
+                    <button aria-label="Close"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <div class="">
+                    あなたは好きですか？
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+<style>
+    body {
+        background-color: silver;
+    }
+    .window-body {
+        background-color: red;;
+        height: 300px;
+        margin: 0;
+    }
+    button[aria-label="Maximize"]:disabled {
+        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='9' height='9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9 0H0v9h9V0zM8 2H1v6h7V2z' fill='%23777'/%3E%3C/svg%3E");
+    }
+</style>
