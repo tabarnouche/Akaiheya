@@ -15,30 +15,65 @@ import '98.css'
             <div class="title-bar">
                 <div class="title-bar-text">
                     <img src="./ie.png" alt="">
-                    http://www.akaiheya.co.jp
+                    http://www.akaiheya.co.jp - Microsoft Internet Explorer
                 </div>
                 <div class="title-bar-controls">
                     <button aria-label="Minimize"></button>
                     <button aria-label="Maximize" disabled></button>
-                    <button aria-label="Close"></button>
+                    <button aria-label="Close" id="button-close"></button>
                 </div>
             </div>
             <div class="window-body">
                 <div class="anatawa">
-                    <p>あなたは赤い部屋が</p>
+                    <p>あなたは 赤い部屋が</p>
                 </div>
                 <div class="sukisuka">
                     <p>好きですか？</p>
                 </div>
             </div>
         </div>
-        <audio src="./1.ogg" id="anatawa" controls></audio>
-        <audio src="./2.ogg" id="akaiheyaga" controls></audio>
+        <audio src="./1.mp3" id="sound-anatawa"></audio>
+        <audio src="./2.mp3" id="sound-akaiheyaga"></audio>
+        <audio src="./3.mp3" id="sound-scream"></audio>
     </body>
 </html>
 
+<script is:raw>
+    let count = 0;
+    const sound_anatawa = document.getElementById('sound-anatawa');
+    const sound_akaiheyaga = document.getElementById('sound-akaiheyaga');
+    const sound_scream = document.getElementById('sound-scream');
+
+    const button_close = document.getElementById('button-close');
+
+    button_close.addEventListener('click', () => {
+        button_close.disabled = true;
+        count++;
+        sound_anatawa.play();
+        let anatawa_position = document.querySelector('.anatawa').offsetLeft - 10;
+        document.querySelector('.anatawa').style.left = anatawa_position + 'px';
+    });
+
+    sound_anatawa.addEventListener('ended', () => {
+        button_close.disabled = false;
+        if (count >= 5 && count <= 20) {
+            button_close.click();
+        }
+        if (count === 21) {
+            sound_anatawa.pause();
+            sound_akaiheyaga.play();
+        }
+    });
+    sound_akaiheyaga.addEventListener('ended', () => {
+        sound_scream.play();
+        document.querySelector('.window').style.display = 'none';
+        document.querySelector('body').style.background = 'red';
+        document.querySelector('html').style.cursor = 'none';
+    });
+</script>
+
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400&display=swap');
     body {
         background-color: silver;
     }
@@ -54,27 +89,38 @@ import '98.css'
         user-select: none;
     }
     .window-body {
+        position: relative;
         width: 100%;
         height: calc(100% - 22px);
-        background-color: red;;
+        background-color: red;
         margin: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 1rem;
+        overflow: hidden;
+    }
+    .anatawa {
+        position: absolute;
+        z-index: 0;
+        right: 6%;
+        height: 100%;
+    }
+    .sukisuka {
+        position: absolute;
+        z-index: 1;
+        right: 0;
+        background: red;
+        height: 100%;
     }
     .window-body p {
-        margin: 0;
         font-size: 2.5rem;
         font-family: "Noto Serif JP", serif;
         font-optical-sizing: auto;
         font-weight: 400;
         font-style: normal;
+        white-space: nowrap;
     }
-    .anatawa {
+    .anatawa p{
         rotate: -5deg;
     }
-    .sukisuka {
+    .sukisuka p{
         rotate: 5deg;
     }
     button[aria-label="Maximize"]:disabled {
