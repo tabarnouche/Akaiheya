@@ -1,20 +1,50 @@
 ---
 import '98.css'
+const title = '赤い部屋'
+const desc = 'ホームページを開いた瞬間、本来のブラウザ以外に表示される小さな広告。ーーポップアップ広告。普段は誰もが見向きもしないまま消すこの広告。その中に、「絶対に消してはいけないと言われている広告がある」そんな噂を聞いたことがありますか？'
+const ogp_image = '/Akaiheya/ogp.png'
 ---
 
 <html lang="ja">
     <head>
         <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <title>Astro</title>
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/Akaiheya/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/Akaiheya/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/Akaiheya/favicon-16x16.png">
+        <link rel="manifest" href="/Akaiheya/site.webmanifest">
+        <link rel="mask-icon" href="/Akaiheya/safari-pinned-tab.svg" color="#ff0000">
+        <meta name="msapplication-TileColor" content="#ff0000">
+        <meta name="theme-color" content="#ff0000">
+
+        <!-- Primary Meta Tags -->
+        <title>赤い部屋</title>
+        <meta name="title" content={title} />
+        <meta name="description" content={desc} />
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={Astro.url} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={desc} />
+        <meta property="og:image" content={ogp_image} />
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={Astro.url} />
+        <meta property="twitter:title" content={title} />
+        <meta property="twitter:description" content={desc} />
+        <meta property="twitter:image" content={ogp_image} />
+
+        <!-- Meta Tags Generated with https://metatags.io -->
+
     </head>
     <body>
         <div class="window">
             <div class="title-bar">
                 <div class="title-bar-text">
-                    <img src="./ie.png" alt="">
+                    <img src="/Akaiheya/ie.png" alt="">
                     http://www.akaiheya.co.jp - Microsoft Internet Explorer
                 </div>
                 <div class="title-bar-controls">
@@ -32,9 +62,9 @@ import '98.css'
                 </div>
             </div>
         </div>
-        <audio src="./1.mp3" id="sound-anatawa"></audio>
-        <audio src="./2.mp3" id="sound-akaiheyaga"></audio>
-        <audio src="./3.mp3" id="sound-scream"></audio>
+        <audio src="/Akaiheya/1.mp3" id="sound-anatawa"></audio>
+        <audio src="/Akaiheya/2.mp3" id="sound-akaiheyaga"></audio>
+        <audio src="/Akaiheya/3.mp3" id="sound-scream"></audio>
     </body>
 </html>
 
