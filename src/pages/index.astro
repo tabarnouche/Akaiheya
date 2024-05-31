@@ -2,7 +2,7 @@
 import '98.css'
 const title = '赤い部屋'
 const desc = 'ホームページを開いた瞬間、本来のブラウザ以外に表示される小さな広告。ーーポップアップ広告。普段は誰もが見向きもしないまま消すこの広告。その中に、「絶対に消してはいけないと言われている広告がある」そんな噂を聞いたことがありますか？'
-const ogp_image = '/Akaiheya/ogp.png'
+const ogp_image = 'ogp.png'
 ---
 
 <html lang="ja">
@@ -28,14 +28,14 @@ const ogp_image = '/Akaiheya/ogp.png'
         <meta property="og:url" content={Astro.url} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={desc} />
-        <meta property="og:image" content={ogp_image} />
+        <meta property="og:image" content={Astro.url + ogp_image} />
 
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={Astro.url} />
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={desc} />
-        <meta property="twitter:image" content={ogp_image} />
+        <meta property="twitter:image" content={Astro.url + ogp_image} />
 
         <!-- Meta Tags Generated with https://metatags.io -->
 
