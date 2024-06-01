@@ -71,22 +71,32 @@ const ogp_image = '/ogp.png'
 
 <script is:raw>
     let count = 0;
+
     const sound_anatawa = document.getElementById('sound-anatawa');
     const sound_akaiheyaga = document.getElementById('sound-akaiheyaga');
     const sound_scream = document.getElementById('sound-scream');
-
     const button_close = document.getElementById('button-close');
+    const window_98 = document.querySelector('.window');
 
     button_close.addEventListener('click', () => {
-        button_close.disabled = true;
         count++;
+
+        window_98.style.visibility = 'hidden';
+        setTimeout(() => {
+          window_98.style.visibility = 'visible';
+        }, 100);
+
+        button_close.disabled = true;
+
         sound_anatawa.play();
+
         let anatawa_position = document.querySelector('.anatawa').offsetLeft - 10;
         document.querySelector('.anatawa').style.left = anatawa_position + 'px';
     });
 
     sound_anatawa.addEventListener('ended', () => {
         button_close.disabled = false;
+
         if (count >= 5 && count <= 20) {
             button_close.click();
         }
@@ -97,7 +107,8 @@ const ogp_image = '/ogp.png'
     });
     sound_akaiheyaga.addEventListener('ended', () => {
         sound_scream.play();
-        document.querySelector('.window').style.display = 'none';
+
+        window_98.style.display = 'none';
         document.querySelector('body').style.background = 'red';
         document.querySelector('html').style.cursor = 'none';
     });
